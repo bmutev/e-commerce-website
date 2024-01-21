@@ -1,7 +1,7 @@
 from django.db import models
 
-class Category(models.Model):
 
+class Category(models.Model):
     # db_index - for search acceleration and memory optimization
     name = models.CharField(max_length=250, db_index=True)
 
