@@ -21,6 +21,9 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    # on_delete CASCADE makes sure that if the Category is removed, all related products are deleted
+    category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE, null=True)
+
     title = models.CharField(max_length=250, db_index=True)
     brand = models.CharField(max_length=250, default="un-branded")
     description = models.TextField(max_length=250)
