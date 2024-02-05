@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.urls import reverse
+
 
 class Category(models.Model):
     # db_index - for search acceleration and memory optimization
@@ -38,3 +40,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('product-info', args=[self.slug])
