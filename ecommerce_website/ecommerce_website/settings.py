@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'store.views.categories',  # <- make the caregory data available to all pages through the context processor
+                'cart.context_processors.cart'  # <- make the Cart class available to all pages
             ],
         },
     },
