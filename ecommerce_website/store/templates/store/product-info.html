@@ -76,13 +76,14 @@
             type: 'POST',
             url: '{% url "cart-add" %}',
             data: {
-                product_id: $('$add-button').value(),
-                product_quantity: $('#select option:selected').value(),
+                product_id: $('#add-button').val(),
+                product_quantity: $('#select option:selected').val(),
                 csrfmiddlewaretoken: "{{csrf_token}}",
                 action: 'post'
             },
 
             success: function(json) {
+                console.log(json)
             },
 
             error: function(xhr, errmsg, err) {

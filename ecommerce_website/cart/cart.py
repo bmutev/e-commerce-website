@@ -13,3 +13,9 @@ class Cart:
         # Fill the cart with the products that the user has put in it from older session
         # or set it to empty if a new user
         self.cart = cart
+
+    def add(self, product, product_qty):
+        product_id = str(product.id)
+
+        self.cart[product_id] = {'price': str(product.price), 'qty': product_qty}
+        self.session.modified = True
