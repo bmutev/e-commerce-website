@@ -1,5 +1,8 @@
-class Cart:
+from store.models import Product
+from decimal import Decimal
 
+
+class Cart:
     def __init__(self, request):
         self.session = request.session
 
@@ -30,3 +33,17 @@ class Cart:
 
         return total_qty
         # return sum(item['qty'] for item in self.cart.values())
+
+# for symbol in str:
+    def __iter__(self):
+        all_product_ids = self.cart.keys()
+
+        products = Product.objects.filter(id__in=all_product_ids)
+
+        cart = self.cart.copy()
+
+        for product in products:
+            cart[str(product.id)]['product'] = product
+
+        for item in cart.values():
+            yield item
