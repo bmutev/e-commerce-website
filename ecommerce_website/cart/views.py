@@ -21,7 +21,9 @@ def cart_add(request):
         product = get_object_or_404(Product, id=product_id)
         cart.add(product=product, product_qty=product_quantity)
 
-        response = JsonResponse({'Session': cart.cart})
+        cart_quantity = cart.__len__()
+
+        response = JsonResponse({'qty': cart_quantity})
         return response
 
 

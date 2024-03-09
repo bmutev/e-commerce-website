@@ -73,6 +73,15 @@
                 <li class="nav-item">
                     <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary">
                         <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
+                        <div id="cart-qty">
+                            {% with qty_amount=cart|length %}
+                                {% if qty_amount > 0 %}
+                                    {{ qty_amount }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            {% endwith %}
+                        </div>
                     </a>
                 </li>
 

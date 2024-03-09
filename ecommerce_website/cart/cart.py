@@ -17,5 +17,16 @@ class Cart:
     def add(self, product, product_qty):
         product_id = str(product.id)
 
-        self.cart[product_id] = {'price': str(product.price), 'qty': product_qty}
+        if product_id in self.cart:
+            self.cart[product_id]['qty'] += product_qty
+        else:
+            self.cart[product_id] = {'price': str(product.price), 'qty': product_qty}
         self.session.modified = True
+
+    def __len__(self):
+        total_qty = 0
+        for item in self.cart.values():
+            total_qty += item['qty']
+
+        return total_qty
+        # return sum(item['qty'] for item in self.cart.values())
